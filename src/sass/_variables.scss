@@ -1,0 +1,86 @@
+// Color
+$buttonColor:#85e3fd;
+$buttonDisabledColor: rgb(175, 174, 174);
+$borderLineColor: rgb(221, 221, 221);
+
+// Height of section components
+$headerHeight:10vh;
+$footerHeight:7.5vh;
+
+$postsListHeight:75vh;
+$paginationHeight:7.5vh;
+
+$otherBodyHeight:82.5vh;
+
+
+@mixin bodyHeight($height){
+    height:$height;
+    overflow-y: auto;
+}
+
+
+@mixin cssforform($height){
+    @include bodyHeight($height);
+
+  h2 {
+    margin: 0.75rem 0;
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+    margin:1.5rem 0 ;
+
+    >* {
+        display: flex;
+        flex-direction: column;
+        margin: 0.4rem 0;
+      
+      .passwordinput{
+        display: flex;
+        position: relative;
+      }
+
+      input,
+      textarea {
+        display: block;
+        padding: 0.25rem;
+        font-size: 1rem;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        border-radius: 10px;
+        border: 1px solid $borderLineColor;
+        transition: border-color 0.3s ease-in-out;
+        width: 70%;
+        
+        &:focus {
+          outline: none;
+          border-color: dodgerblue;
+        }
+      }
+      span{
+        position: absolute;
+        transform: translate(-50%, -50%);
+        right:30%;
+        top: 50%;
+        width: 1rem;
+        cursor: pointer;
+      }
+      input[type="checkbox"]{
+        width: 1rem;
+      }
+      .large-textarea {
+        height: 30vh;
+      }
+    }   
+    .flexforbutton{
+      flex-direction: row;
+      justify-content: flex-start;
+      align-items: center;
+      gap: 0.5vw;
+    }
+    
+  }
+}
+
+
+

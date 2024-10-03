@@ -1,0 +1,201 @@
+@use "variables" as variables;
+@use "breakpoints" as breakpoints;
+@use "global" as global;
+
+// header
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: variables.$headerHeight;
+
+  h1 {
+    .icon {
+      color: variables.$buttonColor;
+    }
+  }
+
+  nav {
+    ul {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+
+      @include breakpoints.maxwidth(767px) {
+        position: absolute;
+        top: -100vh;
+        left: 0;
+        right: 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+        height: 100vh;
+        background-color: white;
+        transition: top 0.5s ease-in-out;
+      }
+    }
+
+    .navbarchange {
+      top: 0vh;
+    }
+  }
+
+  .hamburger-menu {
+    display: none;
+    z-index: 1;
+
+    @include breakpoints.maxwidth(767px) {
+      display: block;
+    }
+  }
+}
+
+
+
+
+
+
+//  footer 
+footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: variables.$footerHeight;
+}
+
+
+
+
+
+// PostsList 
+.home {
+  .postslist {
+    height: variables.$postsListHeight;
+    overflow-y: auto;
+
+    h2 {
+      margin: 1rem 0;
+      text-align: center;
+    }
+
+    .individualpost {
+      border: 1px solid variables.$borderLineColor;
+      padding: 1rem;
+
+      >* {
+        margin: 0.75rem 0;
+      }
+
+      .linkauthordate {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 1rem;
+      }
+    }
+  }
+
+  .pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: variables.$paginationHeight;
+
+    .paginationbuttonlist {
+      display: flex;
+      justify-content: center;
+
+      button {
+        margin: 0 5px;
+      }
+
+      .paginationnumber {
+        display: flex;
+        flex-wrap: no-wrap;
+      }
+    }
+  }
+}
+
+.reactionbuttonsection{
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+
+
+
+
+// SinglePostPage 
+.singlepostpage {
+  @include variables.bodyHeight(variables.$otherBodyHeight);
+  >* {
+    margin: 0.75rem 0;
+  }
+
+  .linkauthordate {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+}
+
+
+
+
+
+//  EditPostForm 
+//  AddPostForm 
+.cssforformwithheaderfooter{
+  @include variables.cssforform(variables.$otherBodyHeight)
+}
+// Register
+// Login
+// Forgetpassword
+// ResetPassword
+.cssforform{
+  @include variables.cssforform(100vh)
+}
+
+
+
+// login
+//register
+.individualbutton{
+  display: flex;
+  justify-content:start;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+
+// admin
+.userlist{
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1rem
+}
+
+
+
+// UsersList
+// UserPage
+.userslist,
+.userpage {
+  @include variables.bodyHeight(variables.$otherBodyHeight);
+  h2 {
+    margin: 1rem 0;
+  }
+
+  ol {
+    li {
+      margin: 0.5rem 0;
+    }
+  }
+}
