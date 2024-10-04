@@ -35,7 +35,7 @@ const ForgetPassword = () => {
           {errors.username && <p>{errors.username.message}</p>}
         </div>
         <div>
-          <label htmlFor="email">Email:</label>
+          <label htmlFor="email">Your email address for sending a link to reset PW:</label>
           <input type="email" id="email" {...register("email", {required:"Email is required"})} />
           {errors.email && <p>{errors.email.message}</p>}
         </div>

@@ -74,10 +74,45 @@ footer {
   .postslist {
     height: variables.$postsListHeight;
     overflow-y: auto;
-
-    h2 {
+    >* {
       margin: 1rem 0;
+    }
+
+    h1 {
+      font-size: calc(1.25rem + 0.5vw);
       text-align: center;
+    }
+
+    .minihero{
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 2rem;
+      p{
+        text-align: center;
+        font-size: 1.25rem;
+      }
+    }
+
+    .filtersection{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 1rem;
+      input{
+        padding: 0.25rem;
+        font-size: 0.75rem;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        font-weight: bold;
+        border-radius: 10px;
+        border: 1px solid variables.$borderLineColor;
+        transition: border-color 0.3s ease-in-out;        
+        &:focus {
+          outline: none;
+          border-color: dodgerblue;
+        }
+      }
     }
 
     .individualpost {

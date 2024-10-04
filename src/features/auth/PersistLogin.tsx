@@ -2,7 +2,7 @@ import { Outlet } from "react-router-dom";
 import { useState, useEffect } from "react";
 import useRefreshToken from "./hooks/useRefreshToken";
 
-import useLocalStorage from "./hooks/useLocalStorage"; 
+import useLocalStorage from "../../hooks/useLocalStorage"; 
 import { useAppSelector } from "../../app/hooks";
 import { selectAuth } from "./authSlice";
 

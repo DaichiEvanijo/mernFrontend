@@ -1,19 +1,18 @@
-import { Post } from "./postsSlice"
 import { useState } from "react"
 
 type PaginationProps = {
-  posts:Post[]
+  filteredPostsLength:number
   postsPerPage:number,
   currentPage:number,
   setCurrentPage:React.Dispatch<React.SetStateAction<number>>
 }
-const Pagination = ({posts, postsPerPage, currentPage, setCurrentPage}:PaginationProps) => {
+const Pagination = ({filteredPostsLength, postsPerPage, currentPage, setCurrentPage}:PaginationProps) => {
 
   const [numDisplayLimit] =useState(5)
   const [maxNumDisplay, setMaxNumDisplay] =useState(5)
   const [minNumDisplay, setMinNumDisplay] =useState(1)
 
-  const totalPages = Math.ceil(posts.length / postsPerPage)
+  const totalPages = Math.ceil(filteredPostsLength / postsPerPage)
 
   const handleNextBtn = () => {
     if(currentPage < totalPages) {
@@ -34,7 +33,7 @@ const Pagination = ({posts, postsPerPage, currentPage, setCurrentPage}:Paginatio
   
   
   let pages :number[]=[]
-  for(let i = 1; i<= Math.ceil(posts.length/postsPerPage);i++){
+  for(let i = 1; i<= Math.ceil(filteredPostsLength/postsPerPage);i++){
     pages.push(i)
   }
 

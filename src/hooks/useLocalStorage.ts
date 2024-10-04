@@ -2,13 +2,16 @@ import { useState, useEffect } from "react";
 
 const getLocalValue =<T> (key:string, initialValue: T | (() => T) ) : T=> {
   // if this sheet is written for SSR(server side rendering) like Next.js
-  if (typeof window === "undefined") return initialValue instanceof Function ? initialValue() : (initialValue as T);
-  // if a value is already stored in localStorage
-  if(localStorage.getItem(key)) return JSON.parse(localStorage.getItem(key)!)
-  // if a initialValue is a function
-  if(initialValue instanceof Function) return initialValue()
-  // for other cases
-  return initialValue
+  if (typeof window === "undefined"){
+    if(initialValue === "function") return (initialValue as () => T)()
+  }
+
+  const storedValue = localStorage.getItem(key)
+  if (storedValue === null) {
+    return typeof initialValue === "function" ? (initialValue as () => T)() : initialValue;
+  }else{
+    return JSON.parse(storedValue) 
+  }
 }
 
 const useLocalStorage = <T>(key:string, initialValue: T | (() => T)) : [T, React.Dispatch<React.SetStateAction<T>>]=> {

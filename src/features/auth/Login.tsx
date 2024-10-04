@@ -1,6 +1,6 @@
 import axios from '../../api/axios'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
-import useToggle from "./hooks/useToggle"
+import useLocalStorage from '../../hooks/useLocalStorage'
 import { AxiosError } from "axios"
 
 import { useAppDispatch } from "../../app/hooks"
@@ -14,7 +14,7 @@ import usePasswordHideShow from '../../hooks/usePasswordHideShow'
 
 const Login = () => {
 
-  const [check, setCheck] = useToggle("persist",false)
+  const [check, setCheck] = useLocalStorage<boolean>("persist",true)
   const navigate = useNavigate()
   const location = useLocation()
   const from = location.state?.from?.pathname || "/";

@@ -32,7 +32,7 @@ const Header = () => {
       setIsClicked((prev) => !prev);
     }
     if(!auth.username){
-      alert("You don't have permission to create new posts\nplease login")
+      alert("Please login in order to create your post")
     }
   } 
   const userButton = () => {
@@ -40,7 +40,7 @@ const Header = () => {
       setIsClicked((prev) => !prev);
     }
     if(!auth.username){
-      alert("You don't have permission to see userlist\nplease login")
+      alert("Please login to see users and posts by user")
     }
   } 
   const adminButton = () => {
@@ -48,7 +48,7 @@ const Header = () => {
       setIsClicked((prev) => !prev);
     }
     if(!auth.username){
-      alert("You don't have permission for Admin page ")
+      alert("Only admin can visit this page")
     }
   } 
   
@@ -61,7 +61,7 @@ const Header = () => {
           <li onClick={createButton}><Link to={auth.username  ? "/post":"#"}>Create</Link></li>
           <li onClick={userButton}><Link to={auth.username ? "/user":"#"}>Users</Link></li>
           <li onClick={adminButton}><Link to={auth.username ? "/admin":"#"}>Admin</Link></li>
-          <li onClick={() => windowSize < 767 ? setIsClicked(prev => !prev):null}><Link to={auth.accessToken ? "#":"/login"}>{auth.accessToken ? (<button onClick={handleLogout}>Logout</button>):(<button>Login</button>)}</Link></li>
+          {windowSize >= 767 && <li onClick={() => windowSize < 767 ? setIsClicked(prev => !prev):null}><Link to={auth.accessToken ? "#":"/login"}>{auth.accessToken ? (<button onClick={handleLogout}>Logout</button>):(<button>Login</button>)}</Link></li>}
         </ul>
       </nav>
       <div className="hamburger-menu">

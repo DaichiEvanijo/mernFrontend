@@ -46,12 +46,20 @@ ol{
 }
 
 a {
+  color: inherit; 
   text-decoration: none;
   transition: opacity 0.5s;
   &:hover {
     opacity: 0.5;
   }
+  :visited{
+    color:inherit
+  }
+  :active{
+    color:inherit
+  }
 }
+
 
 
 img {
