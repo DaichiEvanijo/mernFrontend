@@ -29,6 +29,7 @@ const useAxiosPrivate = () => {
           prevRequest.sent = true;
           const newAccessToken = await refresh();
           prevRequest.headers['Authorization'] = `Bearer ${newAccessToken}`
+          console.log(`got new accessToken after AT expiration ${newAccessToken}`)
   
           return axiosPrivate(prevRequest)
 
