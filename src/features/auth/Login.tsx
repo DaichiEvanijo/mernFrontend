@@ -86,6 +86,7 @@ const Login = () => {
               id="password"
               {...register("pwd")}
               required
+              autoComplete="current-password"
             />
             <span onMouseDown={handleMouseDown} onMouseUp={handleMouseUp} onMouseLeave={handleMouseLeave}> {showPassword ? "・":"👁️"}</span>
           </div>

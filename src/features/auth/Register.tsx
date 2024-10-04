@@ -72,6 +72,7 @@ const Register = () => {
                 id="pwd"
                 {...register("pwd")}
                 required
+                autoComplete="new-password"
               />
               <span onMouseDown={handleMouseDown1} onMouseUp={handleMouseUp1} onMouseLeave={handleMouseLeave1}> {showPassword1? "・":"👁️"}</span>
             </div>
@@ -86,6 +87,7 @@ const Register = () => {
                 id="confirm_pwd"
                 {...register("matchPwd")}
                 required
+                autoComplete="new-password"
               />
               <span onMouseDown={handleMouseDown2} onMouseUp={handleMouseUp2} onMouseLeave={handleMouseLeave2}> {showPassword2 ? "・":"👁️"}</span>
             </div>

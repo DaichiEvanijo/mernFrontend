@@ -11,14 +11,13 @@ import { fetchPosts } from './features/posts/postsSlice.ts'
 store.dispatch(fetchPosts())
 
 import {disableReactDevTools} from "@fvilers/disable-react-devtools"
-
 if(process.env.NODE_ENV === "production") disableReactDevTools()
 
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
     <Provider store={store}>
-      <Router basename="/typescript-portfolio2">
+      <Router>
         <Routes>
           <Route path="/*" element={<App/>} />
         </Routes>
