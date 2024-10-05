@@ -17,7 +17,7 @@ to see how the website behaves based on roles !! </h2>
 
 <p>※Without login → <br/>website visitor can only see posts</p>
 <p>※Login as User(2001) (e.g.Takahiro) → <br/>login user is able to create, edit/delete(only the posts only this user created), see the posts by users and react by liking a post created by other users</p>
-<p>※※Login as Admin(5150) (e.g.Daichi) → <br/>login user is able to create, edit/delete(only the posts only this user created), see the posts by users and react by liking a post created by other users and visit the Admin page</p>
+<p>※Login as Admin(5150) (e.g.Daichi) → <br/>login user is able to create, edit/delete(only the posts only this user created), see the posts by users and react by liking a post created by other users and visit the Admin page</p>
 
 
 <h3>Implemented skills</h3>
