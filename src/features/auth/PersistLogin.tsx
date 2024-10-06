@@ -43,7 +43,7 @@ const PersistLogin = () =>{
     <>
       {!persist ? <Outlet/>:
         isLoading ? <p style={{maxWidth:"1024px", margin: "0 auto",
-          padding: "0 1.25rem"}}>is Loading...<br/><span style={{color:"red"}}>**As I created web server on Render.com with free plan, the web server goes to sleepmode when a user is not active in the last 15 minutes,resulting in taking time to fetch data from web server..**</span></p> : <Outlet/>
+          padding: "0 1.25rem"}}>is Loading...</p> : <Outlet/>
       }
     </>
   )

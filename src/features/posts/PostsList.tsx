@@ -2,7 +2,7 @@ import { useAppSelector } from "../../app/hooks"
 import { selectAllPosts, getPostsStatus, getPostsError } from "./postsSlice"
 import PostsExcerpt from "./PostsExcerpt"
 import Pagination from "./Pagination"
-import { useCallback, useEffect, useMemo, useState } from "react"
+import { useCallback,   useEffect,   useMemo, useState } from "react"
 import { selectAuth } from "../auth/authSlice"
 import { Link } from "react-router-dom"
 
@@ -18,36 +18,36 @@ const PostsList = () => {
   const postsPerPage = 10
   const lastPostsIndex = currentPage*postsPerPage
   const firstPostsIndex = lastPostsIndex-postsPerPage
-  const [filteredPosts, setFilteredPosts] = useState(posts)
   const [searchText, setSearchText] = useState("")
-  // 1.filtering posts and include the filtered posts in filteredPosts
-  const performFiltering = useCallback(() => {
-    const searchFilteredPosts = posts.filter(post => 
-      post.title.toLowerCase().includes(searchText.toLowerCase().trim()) ||post.author.toLowerCase().includes(searchText.toLowerCase().trim())
-    )
-    setFilteredPosts(searchFilteredPosts)
-    setCurrentPage(1)
-  },[posts,searchText])
-  // 2. rearranging filteredPosts chronologically
-  const orderedPosts = useMemo(() => filteredPosts.slice()
+  // 1. rearranging filteredPosts chronologically
+  const orderedPosts = useMemo(() => posts.slice()
   .sort((a, b) => {
     if (b.createdAt && a.createdAt){
       return b.createdAt.localeCompare(a.createdAt);
     }else{
       return 0
     }
-  }),[filteredPosts])
+  }),[posts])
+  const [filteredPosts, setFilteredPosts] = useState(orderedPosts)
+  // 2.filtering ordered posts and include the filtered ordered posts in filteredPosts
+  const performFiltering = useCallback(() => {
+    const searchFilteredPosts = orderedPosts.filter(post => 
+      post.title.toLowerCase().includes(searchText.toLowerCase().trim()) ||post.author.toLowerCase().includes(searchText.toLowerCase().trim())
+    )
+    setFilteredPosts(searchFilteredPosts)
+    setCurrentPage(1)
+  },[orderedPosts, searchText])
   // 3. slicing chronologically arranged filteredPosts into each pagination
-  const currentPosts = useMemo(() => orderedPosts.slice(firstPostsIndex, lastPostsIndex),[orderedPosts, firstPostsIndex, lastPostsIndex])
+  const currentPosts = useMemo(() => filteredPosts.slice(firstPostsIndex, lastPostsIndex),[filteredPosts, firstPostsIndex, lastPostsIndex])
 
-  
+
   useEffect(() => {
-    if(searchText.trim()){
+    if (searchText.trim()) {
       performFiltering()
-    }else{
-      setFilteredPosts(posts)
+    } else {
+      setFilteredPosts(orderedPosts)  
     }
-  }, [posts, searchText])
+  }, [orderedPosts, searchText])
 
 
 
@@ -58,7 +58,7 @@ const PostsList = () => {
     
   } else if (postStatus === 'succeeded') {
     
-    const postsContent = currentPosts.map(post => <PostsExcerpt key={post._id} post={post}/>)
+    const postsContent = currentPosts.map(post => <PostsExcerpt key={post._id} post={post} />)
     content = postsContent.length ? postsContent:<p style={{textAlign:"center"}}>There is no post to display based on your searching words</p>
     
   }else if(postStatus==='failed'){
@@ -79,7 +79,7 @@ const PostsList = () => {
         }
         <div className="filtersection">
          <input type="text" placeholder="input a prefecture/author" value={searchText} onChange={e => setSearchText(e.target.value)} onKeyDown={e => {if(e.key === "Enter") performFiltering()}} />
-         <button onClick={() => setFilteredPosts(posts)}>Reset filter</button>
+         <button onClick={() => {setFilteredPosts(orderedPosts);setSearchText("")}}>Reset filter</button>
         </div>
         {content}
       </section>

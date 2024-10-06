@@ -11,6 +11,7 @@ import useAxiosPrivate from "../auth/hooks/useAxiosPrivate";
 import { useForm } from "react-hook-form";
 import { postEditSchema, PostEditSchema } from "../../lib/types";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { Link } from "react-router-dom";
 
 
 type RouterParams ={
@@ -94,6 +95,7 @@ const EditPostForm = () => {
           <button type="submit" disabled={isSubmitting}
           className={`${isSubmitting? "disabled":""}`}>Save Post</button>
           <button type="button" onClick={onDeletePostClicked}>Delete Post</button>
+          <Link to="/"><button>Back to posts</button></Link>
         </div>
       </form>
     </section>

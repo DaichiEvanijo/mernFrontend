@@ -18,9 +18,10 @@ const ReactionButtons = ({post}:ReacttionButtonsProps) => {
   const auth = useAppSelector(selectAuth)
   const axiosPrivate = useAxiosPrivate()
   const iconClick = () => {
-   !auth.roles?.includes(2001) ? alert("Please login to interact with posts !! "):null
+   !auth.roles?.includes(2001) ? alert("Please login to interact with posts !! "):
    dispatch(addReaction({reactionData:{_id: post._id,},axiosPrivate}))
   }
+  console.log(post.reactedUsers.length)
 
     return(
       <span className="reactionbuttonsection">
