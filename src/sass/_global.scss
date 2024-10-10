@@ -5,7 +5,7 @@
 
 @mixin buttonstyle($color){
   all: unset;
-  min-width: 1.5vw;
+  min-width: fit-content;
   text-align: center;
   color:$color;
   border: 2px solid variables.$borderLineColor;

@@ -55,13 +55,14 @@ const Header = () => {
   return (
     <header>
       <h1><Link to ="/"><FaReact className="icon" fontSize=" 40px" /><BiLogoTypescript fontSize=" 40px" className="icon" /></Link></h1>
+      {windowSize < 767 && auth.username && <button onClick={handleLogout}>Logout</button> }
       <nav>
         <ul className={` ${isClicked ? 'navbarchange' : ''}`}>
           <li onClick={() => windowSize < 767 ? setIsClicked(prev => !prev):null}><Link to="/">Home</Link></li>
           <li onClick={createButton}><Link to={auth.username  ? "/post":"#"}>Create</Link></li>
           <li onClick={userButton}><Link to={auth.username ? "/user":"#"}>Users</Link></li>
           <li onClick={adminButton}><Link to={auth.username ? "/admin":"#"}>Admin</Link></li>
-          {windowSize >= 767 && <li onClick={() => windowSize < 767 ? setIsClicked(prev => !prev):null}><Link to={auth.accessToken ? "#":"/login"}>{auth.accessToken ? (<button onClick={handleLogout}>Logout</button>):(<button>Login</button>)}</Link></li>}
+          {windowSize >= 767 && <li onClick={() => windowSize < 767 ? setIsClicked(prev => !prev):null}><Link to={auth.accessToken ? "#":"/login"}>{auth.username ? (<button onClick={handleLogout}>Logout</button>):(<button>Login</button>)}</Link></li>}
         </ul>
       </nav>
       <div className="hamburger-menu">
