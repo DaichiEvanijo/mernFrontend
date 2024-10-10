@@ -55,7 +55,7 @@ const Header = () => {
   return (
     <header>
       <h1><Link to ="/"><FaReact className="icon" fontSize=" 40px" /><BiLogoTypescript fontSize=" 40px" className="icon" /></Link></h1>
-      {windowSize < 767 && auth.username && <button onClick={handleLogout}>Logout</button> }
+      {windowSize < 767 && auth.username && <button onClick={handleLogout} style={{marginLeft:"2.25rem"}}>Logout</button> }
       <nav>
         <ul className={` ${isClicked ? 'navbarchange' : ''}`}>
           <li onClick={() => windowSize < 767 ? setIsClicked(prev => !prev):null}><Link to="/">Home</Link></li>
