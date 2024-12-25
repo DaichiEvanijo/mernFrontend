@@ -9,9 +9,13 @@ type RouterParams = {
 
 const UserPage = () => {
   const { userId } = useParams<RouterParams>();
-  const user = userId ? useAppSelector((state) => selectUserById(state, userId)):null
+  const user = userId
+    ? useAppSelector((state) => selectUserById(state, userId))
+    : null;
   const status = useAppSelector(userStatus);
-  const postsForUser = useAppSelector((state) => user ? selectPostByAuthor(state, user.username) : []);
+  const postsForUser = useAppSelector((state) =>
+    user ? selectPostByAuthor(state, user.username) : []
+  );
 
   // ページをrefreshしたときにusersがfetchされる前このシートが呼ばれてエラーが出るのを防ぐ
   if (status === "loading") {

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState } from "react";
 
 const usePasswordHideShow = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -23,4 +23,4 @@ const usePasswordHideShow = () => {
   };
 };
 
-export default usePasswordHideShow
+export default usePasswordHideShow;
