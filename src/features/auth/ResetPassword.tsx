@@ -51,7 +51,7 @@ const ResetPassword = () => {
           <div className="passwordinput">
             <input
               type={showPassword ? "text" : "password"}
-              id="confirm_pwd"
+              id="password"
               {...register("password")}
               required
             />

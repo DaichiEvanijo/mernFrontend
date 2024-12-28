@@ -22,3 +22,6 @@ to see how the website behaves based on roles !! </h2>
 
 <h3>Implemented skills</h3>
 <p>MERN, JWT Authorization/Authentication, role-based protected routes, persistent login, Typesript, Redux toolkit, Zod, React-hook-form, SASS</p>
+
+
+// "test:coverage": "jest --coverage"

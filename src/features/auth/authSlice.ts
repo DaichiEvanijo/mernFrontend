@@ -41,3 +41,13 @@ export const selectAuth = (state:RootState) => state.auth
 export const {setAuth, clearAuth} = authSlice.actions
 export default authSlice.reducer
 
+
+// for test
+export type AuthPreloadedType = {
+  auth: {
+    username:string| null,
+    accessToken:string| null,
+    roles:number[],
+  };
+};
+

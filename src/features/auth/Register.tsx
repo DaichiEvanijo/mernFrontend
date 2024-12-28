@@ -79,7 +79,7 @@ const Register = () => {
               <div className="passwordinput">
                 <input
                   type={showPassword1 ? "text" : "password"}
-                  id="pwd"
+                  id="password"
                   {...register("pwd")}
                   required
                   autoComplete="new-password"

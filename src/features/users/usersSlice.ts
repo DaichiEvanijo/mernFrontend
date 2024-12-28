@@ -4,12 +4,12 @@ import { RootState } from "../../app/store";
 
 import { AxiosInstance } from "axios";
 
-type User = {
+export type User = {
   _id: string;
   username: string;
   roles: number[];
 };
-type UserInitialStateType = {
+export type UserInitialStateType = {
   users: User[];
   status: string;
   error: string;
@@ -85,3 +85,13 @@ export const selectUserById = (state: RootState, userId: string) =>
 export const userStatus = (state: RootState) => state.users.status;
 
 export default usersSlice.reducer;
+
+
+// for test
+export type UserPreloadedStateType = {
+  users: {
+    users: User[]; 
+    status: string;
+    error: string;
+  };
+};
